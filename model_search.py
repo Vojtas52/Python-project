@@ -18,7 +18,8 @@ def search_model(user_input):
     n_days_search.
     """
     import re
-    
+    import requests
+
     user_search_input = str(user_input)
     user_search_input = re.sub(r"[^\w\s]", '', user_search_input)
     user_search_input = re.sub(r"\s+", '+', user_search_input)
