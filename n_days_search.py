@@ -15,7 +15,8 @@ def n_days_search(n_days):
     """
     number_of_accepted_past_days = n_days #range (0:5) - if more,
     # print error message that number of max days exceeded and we work with only 5 past days
-
+    from datetime import date, datetime, timedelta
+    import time
     today = date.today()
     accepted_days = list()
 
