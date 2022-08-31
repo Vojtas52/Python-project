@@ -1,5 +1,3 @@
-import re
-
 # firstly, we define the input variable so the user can search according to their preference
 def search_model(user_input):
     """
@@ -19,7 +17,8 @@ def search_model(user_input):
     The function returns "soup_list" - the list of html codes for each adv. tab that we process with function 
     n_days_search.
     """
-    
+    import re
+
     user_search_input = str(user_input)
     user_search_input = re.sub(r"[^\w\s]", '', user_search_input)
     user_search_input = re.sub(r"\s+", '+', user_search_input)
