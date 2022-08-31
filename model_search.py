@@ -1,3 +1,5 @@
+import re
+
 # firstly, we define the input variable so the user can search according to their preference
 def search_model(user_input):
     """
