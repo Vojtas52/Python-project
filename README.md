@@ -1,4 +1,4 @@
-# Getting current car prices and other relevant parameters from bazos.cz 
+# Current car prices and other relevant parameters from bazos.cz 
 
 In this project, we scrape the bazos.cz website and collect recent car advertisements. Based on the user input (car brand, model, etc.), we filter all the recent advertisements, and get the price, milage, and the year of manufacture.
 
