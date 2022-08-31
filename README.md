@@ -14,7 +14,7 @@ The core of the project is Jupyter Notebook [final_project_submit.ipynb](https:/
 
 Then we also use two python scripts that contains functions that we have written, but to make the Jupyter Ntb. more concise, we saved them as separate files and we load them in the process - these scripts are [model_search.py](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/model_search.py) and [n_days_search.py](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/n_days_search.py).
 
-Another relevant file is [requirements.txt](https://github.com/Vojtas52/Python-project/blob/3ecfddd04d22bbf45240c4e08cc9764e5b79e2ce/requirements.txt) which specifies packages/libraries that are required for running our project.
+Another relevant file is [requirements.txt](https://github.com/Vojtas52/Python-project/blob/3ecfddd04d22bbf45240c4e08cc9764e5b79e2ce/requirements.txt) which specifies packages/libraries that are required for running our project, and also [.gitignore](https://github.com/Vojtas52/Python-project/blob/d465bfc4f743c0c9cae26dcce547690954eb5273/.gitignore).
 
 Apart from that (and the illustration displayed below), other files were used mainly during the project development as testing and debugging files, before putting it together into [final_project_submit.ipynb](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/final_project_submit.ipynb).
 
