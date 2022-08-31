@@ -8,6 +8,8 @@ Initially, based on the user input (usually brand and model specification), we g
 
 We save all those parameter, along with the respective URL, into a dataframe using pandas library.
 
+## Which files are relavant in this repository?
+The core of the project is Jupyter Notebook [final_project_submit.ipynb](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/final_project_submit.ipynb). Then we also use two python scripts that contains functions that we have written, but to make the Jupyter Ntb. more concise, we saved them as separate files and we load them in the process - these scripts are [model_search.py](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/model_search.py) and [n_days_search.py](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/n_days_search.py). 
 [//]: <> (TO BE DONE: specify in which file is what, and etc. ... basically how to operate the .py script or jupyter ntb.)
 
 ![alt text](https://github.com/Vojtas52/Python-project/blob/c3b7dea95ff38be8ca3adabfa22066c54422db40/process_diagram.png)
