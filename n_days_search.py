@@ -1,11 +1,14 @@
 #FILTER for advertisements added in last n_days 
-def n_days_search(n_days):
+def n_days_search(n_days, soup_list):
     """
     Function n_days_search behaves as a filter, and consider only the advertisements that have been added
     within the selected time range.
     
-    The input shoudl be integer from 0 to 5 - where 0 means no past days (just today),
+    It takes two arguments - n_days, and soup_list.
+    The in_days should be integer from 0 to 5 - where 0 means no past days (just today),
     and the 5 means today and 5 days before.
+    The soup_list is the list of html code where we will search for the advertisements
+     - the output of search_model function.
     
     The date is scraped from each adv. source code, converted into datetime object and then challenged
     by condition based on input of n_days_search provided by user.
