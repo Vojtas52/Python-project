@@ -23,4 +23,4 @@ Apart from that (and the illustration displayed below), other files were used ma
 
 [//]: <> (TO BE DONE: specify in which file is what, and etc. ... basically how to operate the .py script or jupyter ntb.)
 
-![alt text](https://github.com/Vojtas52/Python-project/blob/c3b7dea95ff38be8ca3adabfa22066c54422db40/process_diagram.png)
+![alt text](https://github.com/Vojtas52/Python-project/blob/1154eacc407364256ca560b80cddab04bb6b34ad/process_diagram.png)
