@@ -19,6 +19,7 @@ def search_model(user_input):
     """
     import re
     import requests
+    from bs4 import BeautifulSoup
 
     user_search_input = str(user_input)
     user_search_input = re.sub(r"[^\w\s]", '', user_search_input)
