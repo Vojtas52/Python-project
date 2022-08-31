@@ -8,4 +8,6 @@ Initially, based on the user input (usually brand and model specification), we g
 
 We save all those parameter, along with the respective URL, into a dataframe using pandas library.
 
-To be done: specify in which file is what, and etc. ... basically how to operate the .py script or jupyter ntb.
+TO BE DONE: specify in which file is what, and etc. ... basically how to operate the .py script or jupyter ntb.
+
+![alt text](https://github.com/Vojtas52/Python-project/blob/c3b7dea95ff38be8ca3adabfa22066c54422db40/process_diagram.png)
