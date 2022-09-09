@@ -1,5 +1,5 @@
 #FILTER for advertisements added in last n_days 
-def n_days_search(n_days, soup_list):
+def n_days_search(n_days: int, soup_list):
     """
     Function n_days_search behaves as a filter, and consider only the advertisements that have been added
     within the selected time range.
@@ -17,6 +17,29 @@ def n_days_search(n_days, soup_list):
     and prepared for further processing - scraping and data-mining of the desired parameters.
     """
     number_of_accepted_past_days = n_days #range (0:5) - if more,
+
+    if not isinstance(n_days, int):
+        raise TypeError('First argument (n_days) should be an integer.'.type(n_days)):
+            return(n_days_search())
+
+    if n_days > 5:
+        raise ValueError('First argument (n_days) should be less than or equal to 5. Your input was:'.format(n_days)):
+            return(n_days_search())
+        
+
+    #def get_int():
+    #userdata = input("Enter an integer n_days, or 'q' to quit: ")
+    #if userdata == 'q':
+    #    return None
+    #try:
+    #    user_number = int(userdata)
+    #    return user_number
+
+    #except ValueError:
+    #    print("I need an integer to continue.")
+    #    return(get_int())
+
+user_number = get_int()
     # print error message that number of max days exceeded and we work with only 5 past days
     from datetime import date, datetime, timedelta
     import time
@@ -53,7 +76,11 @@ def n_days_search(n_days, soup_list):
                 continue
 
             list_of_offers_url.append(f'https://auto.bazos.cz{w}')
-    if n_days > 5:
-        print(f'The entered number is greater than allowed maximum for past days (5). Hence, the search includes past 5 days instead of {n_days} you entered.')
+
+    #if n_days > 5:
+    #    raise Exception('The entered number of days should not exceed 5. The value of n_days was: {}'.format(n_days))
+    #if n_days > 5:
+    #    raise Exception('The entered number of days should not exceed 5. The value of n_days was: {}'.format(n_days))
+    
     print('The number of found advertisements matching the criteria:',len(list_of_offers_url),'.')
     return(list_of_offers_url)
