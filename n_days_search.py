@@ -1,5 +1,5 @@
 #FILTER for advertisements added in last n_days 
-def n_days_search(n_days: int, soup_list):
+def n_days_search(n_days: int, soup_list : list[str]):
     """
     Function n_days_search behaves as a filter, and consider only the advertisements that have been added
     within the selected time range.
@@ -18,13 +18,13 @@ def n_days_search(n_days: int, soup_list):
     """
     number_of_accepted_past_days = n_days #range (0:5) - if more,
 
+    n_days = int(n_days) #TODO - co robit ked do input nedam cislo? 
+
     if not isinstance(n_days, int):
-        raise TypeError('First argument (n_days) should be an integer.'.type(n_days)):
-            return(n_days_search())
+        raise TypeError('First argument (n_days) should be an integer. However, it is: '.type(n_days))
 
     if n_days > 5:
-        raise ValueError('First argument (n_days) should be less than or equal to 5. Your input was:'.format(n_days)):
-            return(n_days_search())
+        raise ValueError('First argument (n_days) should be less than or equal to 5. Your input was:'.format(n_days))
         
 
     #def get_int():
@@ -39,7 +39,7 @@ def n_days_search(n_days: int, soup_list):
     #    print("I need an integer to continue.")
     #    return(get_int())
 
-user_number = get_int()
+    #user_number = get_int()
     # print error message that number of max days exceeded and we work with only 5 past days
     from datetime import date, datetime, timedelta
     import time
@@ -83,4 +83,5 @@ user_number = get_int()
     #    raise Exception('The entered number of days should not exceed 5. The value of n_days was: {}'.format(n_days))
     
     print('The number of found advertisements matching the criteria:',len(list_of_offers_url),'.')
-    return(list_of_offers_url)
+    #logger / pozriet sa neskor , kniznica logging
+    return list_of_offers_url

@@ -1,5 +1,5 @@
 # firstly, we define the input variable so the user can search according to their preference
-def search_model(user_input):
+def search_model(user_input : str):
     """
     Function search_model takes string input, hence it has to be in quotes ("").
     The input should be the name of the car model you would like to get results for,
@@ -21,6 +21,9 @@ def search_model(user_input):
     import requests
     from bs4 import BeautifulSoup
 
+    if type(user_input) != str:
+        raise TypeError('The user_input should be a string.')
+    
     user_search_input = str(user_input)
     user_search_input = re.sub(r"[^\w\s]", '', user_search_input)
     user_search_input = re.sub(r"\s+", '+', user_search_input)
