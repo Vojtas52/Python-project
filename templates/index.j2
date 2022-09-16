@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Grafiky</title>
+    <style>
+      header {
+        display: flex;
+        justify-content: center;
+      }
+      input {
+        margin-right: 0.5rem;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <input id='queryInput'>
+    <button id='queryButton'>Click me</button>
+  </header>
+    {% if page_data %}
+      <div>
+          <canvas id="myChart"></canvas>
+      </div>
+      <script>
+          const data = {
+            labels: {{ page_data['x-values']|tojson }},
+            datasets: [{
+              label: '{{ page_data['input'] }}',
+              backgroundColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: {{ page_data['y-values']|tojson }},
+            }]
+          };
+        
+          const config = {
+            type: 'line',
+            data: data,
+            options: {
+              scales: {
+                leftScale: {
+                  position: 'left',
+                  title: {
+                    display: true,
+                    text: 'Cena [Czk]'
+                  }
+                },
+                bottomScale: {
+                  position: 'bottom',
+                  title: {
+                    display: true,
+                    text: 'Datum'
+                  }
+                },
+              }
+            }
+          };
+      </script>
+      <script>
+          const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+          );
+      </script>
+    {% endif %}
+  <script>
+    document.getElementById("queryButton").addEventListener('click', () => {
+      window.location.href = '/?input=' + document.getElementById('queryInput').value 
+    })
+  </script>
+</body>
+</html>
