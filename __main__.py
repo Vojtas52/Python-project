@@ -11,6 +11,8 @@ def root():
     if not input:
         return render_template("index.j2")
 
+
+    #todo - dodat scrapovani a data mining code, output spravit tak, ze sa nacitaju .py scripty a potom ten output ktory by mi normalne isiel do tabulky 
     order = []
     date = []
     price = []

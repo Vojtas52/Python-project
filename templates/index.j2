@@ -144,12 +144,12 @@
       </div>
       <script>
           const data = {
-            labels: {{ page_data['x-values']|tojson }},
+            labels: {{ page_data['order-values']|tojson }},
             datasets: [{
               label: '{{ page_data['input'] }}',
               backgroundColor: 'rgb(255, 99, 132)',
               borderColor: 'rgb(255, 99, 132)',
-              data: {{ page_data['y-values']|tojson }},
+              data: {{ page_data['price-values']|tojson }},
             }]
           };
         
