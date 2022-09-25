@@ -31,7 +31,7 @@ def search_model(user_input : str):
     no_of_adv_url = 'https://auto.bazos.cz/0/?hledat=' + user_search_input + '&hlokalita=&humkreis=25&cenaod=&cenado=&order='
 
     page = requests.get(no_of_adv_url)
-    no_of_adv_html = BeautifulSoup(page.text, 'html')
+    no_of_adv_html = BeautifulSoup(page.text,  features='html.parser')
 
     get_no_adv = no_of_adv_html.find('div', {'class':'listainzerat inzeratyflex'})
     get_no_adv = get_no_adv.find('div', {'class':'inzeratynadpis'})
@@ -67,7 +67,7 @@ def search_model(user_input : str):
         page = requests.get(url)
 
         ## MAYBE SLOW DOWN LATER by 0.3s per iteration
-        soup_list.append(BeautifulSoup(page.text, 'html'))
+        soup_list.append(BeautifulSoup(page.text, features='html.parser'))
 
     # filter to cut-off pseudo-empty elements in main_url_list to prevent the unwanted behaviour of the code
     res_soup_list = []

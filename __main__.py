@@ -24,8 +24,8 @@ def root():
     soup_list = search_model("octavia 3")
     my_days = 4
     list_of_offers_url = n_days_search(my_days, soup_list)
-    help(search_model)
-    help(n_days_search)
+    #help(search_model)
+    #help(n_days_search)
     ###tady konci kod z jupyteru na scraping
     ############################################################
 
