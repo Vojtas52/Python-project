@@ -24,7 +24,7 @@ def search_model(user_input : str):
     n_days_search.
     """
 
-    if type(user_input) != str:
+    if not isinstance(user_input, int):
         raise TypeError('The user_input should be a string.')
     
     user_search_input = str(user_input)
@@ -38,7 +38,7 @@ def search_model(user_input : str):
     else:
         page = requests.get(no_of_adv_url)
         if not page.status_code == 200:
-            return "Bazos sa odjebal", 503
+            return "Bazos does not response.", 503
 
         cache[no_of_adv_url] = page
     
