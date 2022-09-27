@@ -37,6 +37,8 @@ def root():
     #my_days = int(my_days)
     soup_list = search_model("octavia 3")
     my_days = 4
+    if soup_list is None:
+        return "Bazos does not respond.", 503
     list_of_offers_url = n_days_search(my_days, soup_list)
     #help(search_model)
     #help(n_days_search)

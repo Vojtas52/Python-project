@@ -38,7 +38,7 @@ def search_model(user_input : str):
     else:
         page = requests.get(no_of_adv_url)
         if not page.status_code == 200:
-            return "Bazos does not response.", 503
+            return None
 
         cache[no_of_adv_url] = page
     

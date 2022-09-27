@@ -64,11 +64,7 @@ def n_days_search(n_days: int, soup_list : list[str]):
 
             list_of_offers_url.append(f'https://auto.bazos.cz{w}')
 
-    #if n_days > 5:
-    #    raise Exception('The entered number of days should not exceed 5. The value of n_days was: {}'.format(n_days))
-    #if n_days > 5:
-    #    raise Exception('The entered number of days should not exceed 5. The value of n_days was: {}'.format(n_days))
-    
     print(f'The number of found advertisements matching the criteria: {len(list_of_offers_url)}.')
-    #logger / pozriet sa neskor , kniznica logging
+    #logger / take a look on logging library
+
     return list_of_offers_url

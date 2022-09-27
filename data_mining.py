@@ -1,23 +1,33 @@
 import pandas as pd
 from cache import cache
+import re
+import requests
+from bs4 import BeautifulSoup
+from datetime import date, datetime, timedelta
+import time
+import pandas as pd
 
 def modify_text(text):
     """ Internal function modifying the text of the add to better suit for text mining. """
     return text.replace(" ", "").replace(".", "").replace("xxx", "000").replace("-", "")
+
 def get_numbers_from_text(text):
     """ Internal function for finding all numbers in the text. """
     text = modify_text(text)
     pattern = '[.]?[\d]+[\.]?\d*(?:[eE][-+]?\d+)?'
     list_of_numbers = re.findall(pattern, text)
     return list_of_numbers
+
 def find_years(numbers):
     """ Internal function picking numbers which might be years from all numbers in text. """
     numbers = [x for x in numbers if (float(x) > 1980) and (float(x) < 2023)]
     return numbers
+
 def find_km(numbers):
     """ Internal function picking numbers which might be mileage from all numbers in text. """
     numbers = [x for x in numbers if (float(x) > 3000) and (float(x) < 500000)]
     return numbers
+
 def get_context(text, list_of_tokens, year_dictionary = ['egistr', 'rv', 'RV', 'yrob', 'ýrob', 'prov', 'rok', 'Rok'], km_dictionary = ['km', 'Km', 'KM', 'ilomet', 'ajet', 'ájez', 'achom', 'atoč'], context_span=20):
     """ Internal function looking into surroundings of each year and mileage candidate and searching for parts of words defined in dictionaries. """
     #import re
@@ -59,6 +69,7 @@ class ResultTable(pd.core.frame.DataFrame):
                                     pd.to_numeric(x.mileage)) / pd.to_numeric(x.price))
         temp_table = temp_table.sort_values(by = "score").head(n)
         print(temp_table)
+
 def get_info(links):
     """ Get_info is a final function performing text mining and creating results in form of ResultTable class. """
     results_temp = []
@@ -77,13 +88,19 @@ def get_info(links):
         
             
         soup_add = BeautifulSoup(add_page.text, 'html')
+        #print(f"soup_add=") # looking for a bug
         add = modify_text(soup_add.find('div', {'class':'popisdetail'}).get_text())
+        #print(f"add=") # looking for a bug
         price = soup_add.find('table').find_all('b')[-1].get_text()
+        #print(f"price=") # looking for a bug
         all_numbers = get_numbers_from_text(add)
+        #print(f"all_numbers=") # looking for a bug
         context_got = get_context(add, all_numbers)
+        #print(f"context_got=") # looking for a bug
         result = [i, context_got[0], context_got[1], price.replace(" ", "").replace("Kč", "")]
+        #print(f"result=") # looking for a bug
         results_temp.append(result)
-        time.sleep(0.2)
+        time.sleep(0.1)
     results = ResultTable(results_temp)
     results.columns = ['link', 'year_of_manuf', 'mileage', 'price']
     results = results[(results["price"] != "Dohodou") & (results["price"] != "Vtextu") & (results["price"] != "Nabídněte")]
