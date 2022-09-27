@@ -134,6 +134,7 @@ def root():
         return results
     result = get_info(list_of_offers_url)
 
+    
 
     pd.options.display.max_colwidth = 120
     test = ResultTable(result)
@@ -143,13 +144,25 @@ def root():
     ############################################################
     ############################################################
 
+    ### TODO
+    ###ZISTIT CO TO HADZE AKO OUTPUT - PANDAS, a ci to je dobry output do listu
+    ###Prerobit ze output octavia 3 z jinja-e pojde rovno ako vstup do search_model
+    ### dorobit date - stlpec
+    #dorobit graficky output a filter na dni...
+    # nejako ulozit dni do listu a hodit to nizsie do date = ...
+    #zapracovat filter tlacidlo na pocet dni (najprv napisat kod na filter a potom zapracovat jinja)
+    # vyriesit chybove hlasky co hadze pandas
+    
+    
+    #na konci updateovat readme popis + maybe diagram? 
+
     #todo - dodat scrapovani a data mining code, output spravit tak, ze sa nacitaju .py scripty a potom ten output ktory by mi normalne isiel do tabulky 
-    order = []
-    date = []
-    price = []
-    mileage = []
-    yom = []
-    url = []
+    order = range(1, len(results['link']))
+    date = range(1, len(results['link']))
+    price = results['price']
+    mileage = results['mileage']
+    yom = results['year_of_manuf']
+    url = results['link']
 
     page_data = {
         'order-values': ["1","2","3"], #order,
