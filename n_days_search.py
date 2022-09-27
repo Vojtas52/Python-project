@@ -42,6 +42,7 @@ def n_days_search(n_days: int, soup_list : list[str]):
     list_of_offers_url = list()
 
     for element in soup_list:
+        print(f"{element=}")
         x = element.find_all('div', {'class':'inzeraty inzeratyflex'})
 
         for sub_element in x:

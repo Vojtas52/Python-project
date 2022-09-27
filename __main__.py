@@ -20,9 +20,9 @@ app.jinja_env.filters['zip'] = zip
 def root():
     
     print(f'{cache=}')
-    # input = request.args.get('input')
-    # if not input:
-        # return render_template("index.j2")
+    input = request.args.get('input')
+    if not input:
+        return render_template("index.j2")
     ############################################################
     ############################################################
     ###tady zacina kod z jupyteru na scraping

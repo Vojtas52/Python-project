@@ -1,4 +1,5 @@
 import pandas as pd
+from cache import cache
 
 def modify_text(text):
     """ Internal function modifying the text of the add to better suit for text mining. """
