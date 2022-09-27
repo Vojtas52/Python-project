@@ -74,12 +74,12 @@ def root():
     #na konci updateovat readme popis + maybe diagram?_ 
 
     #todo - dodat scrapovani a data mining code, output spravit tak, ze sa nacitaju .py scripty a potom ten output ktory by mi normalne isiel do tabulky 
-    order = range(1, len(result['link']))
-    date = range(1, len(result['link']))
-    price = result['price']
-    mileage = result['mileage']
-    yom = result['year_of_manuf']
-    url = result['link']
+    order = list(range(1, len(result['link'].values.tolist())))
+    date = list(range(1, len(result['link'].values.tolist())))
+    price = result['price'].values.tolist()
+    mileage = result['mileage'].values.tolist()
+    yom = result['year_of_manuf'].values.tolist()
+    url = result['link'].values.tolist()
 
     # page_data = {
     #     'order-values': ["1","2","3"], #order,
