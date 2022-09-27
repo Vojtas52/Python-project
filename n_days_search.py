@@ -1,3 +1,6 @@
+from datetime import date, datetime, timedelta
+import time
+
 #FILTER for advertisements added in last n_days 
 def n_days_search(n_days: int, soup_list : list[str]):
     """
@@ -41,8 +44,8 @@ def n_days_search(n_days: int, soup_list : list[str]):
 
     #user_number = get_int()
     # print error message that number of max days exceeded and we work with only 5 past days
-    from datetime import date, datetime, timedelta
-    import time
+    #from datetime import date, datetime, timedelta
+    #import time
 
     today = date.today()
     accepted_days = list()
@@ -82,6 +85,6 @@ def n_days_search(n_days: int, soup_list : list[str]):
     #if n_days > 5:
     #    raise Exception('The entered number of days should not exceed 5. The value of n_days was: {}'.format(n_days))
     
-    print('The number of found advertisements matching the criteria:',len(list_of_offers_url),'.')
+    print(f'The number of found advertisements matching the criteria: {len(list_of_offers_url)}.')
     #logger / pozriet sa neskor , kniznica logging
     return list_of_offers_url

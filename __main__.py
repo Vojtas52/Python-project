@@ -2,6 +2,15 @@ from flask import Flask, render_template, request
 from model_search import search_model
 from n_days_search import n_days_search
 
+from cache import cache
+
+import re
+import requests
+from bs4 import BeautifulSoup
+from datetime import date, datetime, timedelta
+import time
+import pandas as pd
+
 app = Flask(__name__)
 app.jinja_env.filters['zip'] = zip
 
@@ -9,6 +18,10 @@ app.jinja_env.filters['zip'] = zip
 
 def root():
     
+    print(f'{cache=}')
+    # input = request.args.get('input')
+    # if not input:
+        # return render_template("index.j2")
     ############################################################
     ############################################################
     ###tady zacina kod z jupyteru na scraping
@@ -94,8 +107,19 @@ def root():
         """ Get_info is a final function performing text mining and creating results in form of ResultTable class. """
         results_temp = []
         for i in links:
-            print(i)
-            add_page = requests.get(i)
+            if i in cache:
+                add_page = cache[i]
+                print("Loaded", i, 'from cache')
+            else:
+                add_page = requests.get(i)
+                if  add_page.status_code == 200:
+                    print(i, add_page.status_code)
+                    continue
+                cache[i] = add_page
+
+            print(i, add_page)
+            
+                
             soup_add = BeautifulSoup(add_page.text, 'html')
             add = modify_text(soup_add.find('div', {'class':'popisdetail'}).get_text())
             price = soup_add.find('table').find_all('b')[-1].get_text()
@@ -118,11 +142,6 @@ def root():
     ### tady konci data mining part
     ############################################################
     ############################################################
-
-    input = request.args.get('input')
-    if not input:
-        return render_template("index.j2")
-
 
     #todo - dodat scrapovani a data mining code, output spravit tak, ze sa nacitaju .py scripty a potom ten output ktory by mi normalne isiel do tabulky 
     order = []

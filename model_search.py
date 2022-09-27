@@ -1,3 +1,9 @@
+from cache import cache
+
+import re
+import requests
+from bs4 import BeautifulSoup
+
 # firstly, we define the input variable so the user can search according to their preference
 def search_model(user_input : str):
     """
@@ -17,9 +23,6 @@ def search_model(user_input : str):
     The function returns "soup_list" - the list of html codes for each adv. tab that we process with function 
     n_days_search.
     """
-    import re
-    import requests
-    from bs4 import BeautifulSoup
 
     if type(user_input) != str:
         raise TypeError('The user_input should be a string.')
@@ -30,7 +33,15 @@ def search_model(user_input : str):
 
     no_of_adv_url = 'https://auto.bazos.cz/0/?hledat=' + user_search_input + '&hlokalita=&humkreis=25&cenaod=&cenado=&order='
 
-    page = requests.get(no_of_adv_url)
+    if no_of_adv_url in cache:
+        page = cache[no_of_adv_url]
+    else:
+        page = requests.get(no_of_adv_url)
+        if not page.status_code == 200:
+            return "Bazos sa odjebal", 503
+
+        cache[no_of_adv_url] = page
+    
     no_of_adv_html = BeautifulSoup(page.text,  features='html.parser')
 
     get_no_adv = no_of_adv_html.find('div', {'class':'listainzerat inzeratyflex'})
@@ -64,7 +75,16 @@ def search_model(user_input : str):
     # and save it as elements of the "soup_list"
     soup_list = list()
     for url in main_url_list:
-        page = requests.get(url)
+        if url in cache:
+            page = cache[url]
+        else:
+            page = requests.get(url)
+            if not page.status_code == 200:
+                continue
+
+            print("Loaded", url, 'from cache')
+
+            cache[url] = page
 
         ## MAYBE SLOW DOWN LATER by 0.3s per iteration
         soup_list.append(BeautifulSoup(page.text, features='html.parser'))
