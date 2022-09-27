@@ -24,7 +24,7 @@ def search_model(user_input : str):
     n_days_search.
     """
 
-    if not isinstance(user_input, int):
+    if not isinstance(user_input, str):
         raise TypeError('The user_input should be a string.')
     
     user_search_input = str(user_input)
