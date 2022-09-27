@@ -28,24 +28,7 @@ def n_days_search(n_days: int, soup_list : list[str]):
 
     if n_days > 5:
         raise ValueError('First argument (n_days) should be less than or equal to 5. Your input was:'.format(n_days))
-        
 
-    #def get_int():
-    #userdata = input("Enter an integer n_days, or 'q' to quit: ")
-    #if userdata == 'q':
-    #    return None
-    #try:
-    #    user_number = int(userdata)
-    #    return user_number
-
-    #except ValueError:
-    #    print("I need an integer to continue.")
-    #    return(get_int())
-
-    #user_number = get_int()
-    # print error message that number of max days exceeded and we work with only 5 past days
-    #from datetime import date, datetime, timedelta
-    #import time
 
     today = date.today()
     accepted_days = list()
