@@ -154,7 +154,7 @@ def root():
     # vyriesit chybove hlasky co hadze pandas
     
     
-    #na konci updateovat readme popis + maybe diagram? 
+    #na konci updateovat readme popis + maybe diagram?_ 
 
     #todo - dodat scrapovani a data mining code, output spravit tak, ze sa nacitaju .py scripty a potom ten output ktory by mi normalne isiel do tabulky 
     order = range(1, len(results['link']))
