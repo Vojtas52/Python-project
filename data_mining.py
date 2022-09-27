@@ -105,4 +105,6 @@ def get_info(links):
     results = ResultTable(results_temp)
     results.columns = ['link', 'year_of_manuf', 'mileage', 'price']
     results = results[(results["price"] != "Dohodou") & (results["price"] != "Vtextu") & (results["price"] != "Nabídněte")]
-    return results
+    filtered_results = results[(results["price"] != "No match") & (results["mileage"] != "No match")]
+
+    return filtered_results

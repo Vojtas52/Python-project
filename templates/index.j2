@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <title>Grafiky</title>
+    <title>Bazos Car Search Engine</title>
     
     <style>
         header {
@@ -28,7 +28,7 @@
           }
 
         th { 
-          background: #3498db; 
+          background: #15bd0f; 
           color: white; 
           font-weight: bold; 
           }
@@ -98,8 +98,8 @@
 
 
 <body>
-  <p>Hello, I am your bazos.cz car searching engine.</p>
-  <p>Please insert the name of your desired car model below.</p>
+  <p><center><big>Hello, I am your <i>bazos.cz</i> car searching engine.</big></center></p>
+  <p><center>Please insert the name of your desired car model below.</center></p>
 
   <header>
     <input id='queryInput'>
@@ -114,6 +114,98 @@
 
 
     {% if page_data %}
+      <p><center><big>Price vs Mileage</big></center></p>  
+      <div>
+          <canvas id="myChart"></canvas>
+      </div>
+      <script>
+          const data = {
+            labels: {{ page_data['mileage-values']|tojson }},
+            datasets: [{
+              label: '{{ page_data['input'] }}',
+              backgroundColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: {{ page_data['price-values']|tojson }},
+            }]
+          };
+        
+          const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+              scales: {
+                leftScale: {
+                  position: 'left',
+                  title: {
+                    display: true,
+                    text: 'Price [CZK]'
+                  }
+                },
+                bottomScale: {
+                  position: 'bottom',
+                  title: {
+                    display: true,
+                    text: 'Mileage [km]'
+                  }
+                },
+              }
+            }
+          };
+      </script>
+      
+
+      <p><center><big>Price vs Year of Manufacture</big></center></p>
+      <div>
+          <canvas id="myChart2"></canvas>
+      </div>
+      <script>
+          const data = {
+            labels: {{ page_data['yom-values']|tojson }},
+            datasets: [{
+              label: '{{ page_data['input'] }}',
+              backgroundColor: 'rgb(12, 57, 204)',
+              borderColor: 'rgb(12, 57, 204)',
+              data: {{ page_data['price-values']|tojson }},
+            }]
+          };
+        
+          const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+              scales: {
+                leftScale: {
+                  position: 'left',
+                  title: {
+                    display: true,
+                    text: 'Price [CZK]'
+                  }
+                },
+                bottomScale: {
+                  position: 'bottom',
+                  title: {
+                    display: true,
+                    text: 'Year of Manufacture [km]'
+                  }
+                },
+              }
+            }
+          };
+      </script>
+
+      <script>
+          const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+          );
+      </script>
+      <script>
+          const myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config
+          );
+      </script>
+
       <table> 
           <thead>
               <tr>
@@ -138,55 +230,21 @@
               {% endfor %}
           </tbody>
       </table>
-
-      <div>
-          <canvas id="myChart"></canvas>
-      </div>
-      <script>
-          const data = {
-            labels: {{ page_data['order-values']|tojson }},
-            datasets: [{
-              label: '{{ page_data['input'] }}',
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 99, 132)',
-              data: {{ page_data['price-values']|tojson }},
-            }]
-          };
-        
-          const config = {
-            type: 'line',
-            data: data,
-            options: {
-              scales: {
-                leftScale: {
-                  position: 'left',
-                  title: {
-                    display: true,
-                    text: 'Cena [Czk]'
-                  }
-                },
-                bottomScale: {
-                  position: 'bottom',
-                  title: {
-                    display: true,
-                    text: 'Datum'
-                  }
-                },
-              }
-            }
-          };
-      </script>
-      <script>
-          const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-          );
-      </script>
     {% endif %}
+
   <script>
     document.getElementById("queryButton").addEventListener('click', () => {
       window.location.href = '/?input=' + document.getElementById('queryInput').value 
     })
   </script>
+  <script>
+    document.getElementById("queryButton2").addEventListener('click', () => {
+      window.location.href = '/?input=' + document.getElementById('queryInput2').value 
+    })
+  </script> 
+
+
+  <p><center>Have a nice day!</center></p>
+  <p><center><em>by Daniel Brosko</em></center></p>
 </body>
 </html>

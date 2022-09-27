@@ -23,35 +23,25 @@ def root():
     input = request.args.get('input')
     if not input:
         return render_template("index.j2")
-    ############################################################
-    ############################################################
-    ###tady zacina kod z jupyteru na scraping
-    #from model_search import search_model
-    #from n_days_search import n_days_search
     
-    #print("Enter your desired car model here:")
-    #my_search = input()
-    #soup_list = search_model(my_search)
-    #print("Enter the number of past days (max. 5) that you want to include in your search here:")
+    ############################################################
+    ###tady zacina kod na scraping
+    soup_list = search_model(input)
     #my_days = input()
     #my_days = int(my_days)
-    soup_list = search_model("octavia 3")
     my_days = 4
     if soup_list is None:
-        return "Bazos does not respond.", 503
+        return "Bazos does not respond, please try again later.", 503
     list_of_offers_url = n_days_search(my_days, soup_list)
-    #help(search_model)
-    #help(n_days_search)
-    ###tady konci kod z jupyteru na scraping
-    ############################################################
-
+    
+    # help(search_model)
+    # help(n_days_search)
+    ###tady konci kod na scraping
+    
     ############################################################
     ### tady zacina data mining part
-        # DATA/TEXT MINING PART
 
     result = get_info(list_of_offers_url)
-
-    
 
     pd.options.display.max_colwidth = 120
     test = ResultTable(result)
@@ -59,21 +49,17 @@ def root():
     test.show_best(n = 10)
     ### tady konci data mining part
     ############################################################
-    ############################################################
 
     ### TODO
-    ###ZISTIT CO TO HADZE AKO OUTPUT - PANDAS, a ci to je dobry output do listu
-    ###Prerobit ze output octavia 3 z jinja-e pojde rovno ako vstup do search_model
-    ### dorobit date - stlpec
-    #dorobit graficky output a filter na dni...
     # nejako ulozit dni do listu a hodit to nizsie do date = ...
     #zapracovat filter tlacidlo na pocet dni (najprv napisat kod na filter a potom zapracovat jinja)
-    # vyriesit chybove hlasky co hadze pandas
     
     
     #na konci updateovat readme popis + maybe diagram?_ 
 
-    #todo - dodat scrapovani a data mining code, output spravit tak, ze sa nacitaju .py scripty a potom ten output ktory by mi normalne isiel do tabulky 
+    # NOTE: v pripade ze bazos nechce povolit/blokuje scrapovani muzeme nacist
+    # 'result_filtered_backup.csv' a natahnout promenne below z daneho dataframe-u
+    
     order = list(range(1, len(result['link'].values.tolist())))
     date = list(range(1, len(result['link'].values.tolist())))
     price = result['price'].values.tolist()
@@ -81,15 +67,6 @@ def root():
     yom = result['year_of_manuf'].values.tolist()
     url = result['link'].values.tolist()
 
-    # page_data = {
-    #     'order-values': ["1","2","3"], #order,
-    #     'date-values': ["2022-8-11","2022-8-12","2022-8-13"], #date,
-    #     'price-values': [250000, 275000, 265000], #price,
-    #     'mileage-values': ["mileage 1", "mileage 2", "mileage 3"], #mileage,
-    #     'yom-values': ["1","2","3"], #yom,
-    #     'url-values': ["1","2","3"], #url,
-    #     'input': input
-    # }
     page_data = {
             'order-values': order,
             'date-values': date,
@@ -105,3 +82,10 @@ def root():
 
 if __name__ == "__main__":
     app.run(port=8080)
+
+# below put into 
+#   <script>
+#     document.getElementById("queryButton2").addEventListener('click', () => {
+#       window.location.href = '/?input=' + document.getElementById('queryInput2').value 
+#     })
+#   </script>
