@@ -1,3 +1,4 @@
+from types import NoneType
 from cache import cache
 
 import re
@@ -82,7 +83,7 @@ def search_model(user_input : str):
             if not page.status_code == 200:
                 continue
 
-            print("Loaded", url, 'from cache')
+            print(f"Loaded {url} from cache.")
 
             cache[url] = page
 
@@ -96,5 +97,8 @@ def search_model(user_input : str):
             res_soup_list.append(element)
     soup_list = res_soup_list
     
-    print("Initial search for your model successfully finished.")
-    return soup_list
+    if soup_list is NoneType:
+        return "I am sorry, but Bazos has denied your requests."
+    else:
+        print("Initial search for your model successfully finished.")
+        return soup_list

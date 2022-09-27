@@ -73,13 +73,14 @@ class ResultTable(pd.core.frame.DataFrame):
 def get_info(links):
     """ Get_info is a final function performing text mining and creating results in form of ResultTable class. """
     results_temp = []
+
     for i in links:
         if i in cache:
             add_page = cache[i]
             print("Loaded", i, 'from cache')
         else:
             add_page = requests.get(i)
-            if  add_page.status_code == 200:
+            if not add_page.status_code == 200:
                 print(i, add_page.status_code)
                 continue
             cache[i] = add_page
