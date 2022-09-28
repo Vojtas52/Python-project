@@ -24,6 +24,10 @@ def root():
     if not input:
         return render_template("index.j2")
     
+    input2 = request.args.get('input2')
+    input2 = input2 if input2 else 4
+    my_days = int(input2)
+
     ############################################################
     ###tady zacina kod na scraping
     #soup_list = search_model('octavia 3')
@@ -33,9 +37,6 @@ def root():
     # global date_dict
     # date_dict = {}
 
-    #my_days = input()
-    #my_days = int(my_days)
-    my_days = 4
     if soup_list is None:
         return "Bazos does not respond, please try again later.", 503
     list_of_offers_url = n_days_search(my_days, soup_list)

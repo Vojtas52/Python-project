@@ -85,7 +85,7 @@ def get_info(links):
                 continue
             cache[i] = add_page
 
-        print(i, add_page)
+        #print(i, add_page)
         
             
         soup_add = BeautifulSoup(add_page.text, 'html')
