@@ -18,7 +18,7 @@ In further project development, we created a flask application - the source code
 
 Also, we tried to make a code a little more readable - we put data-mining functions into [data_mining.py](https://github.com/Vojtas52/Python-project/blob/a27758cef387553ca0a911c98756c0c0362e7708/data_mining.py) script. What's more, we adjusted many lines to be more concise, efficient (e.g., when raising errors, or comparing the types of used variables) in the entire source code (even though I am sure it can still be done much better somehow).
 
-And while the cache seems to be pretty efficient for storing the responses that got through and later providing them, we saved one backup .csv file with the data (in the earlier phase) that if necessary, it can be loaded to see the graphical ouptu, however, we will also provide the pdf version of the flask miniapp to see the results without actually having to run the program. [PDF of the flask mini-app environment here](https://github.com/Vojtas52/Python-project/blob/7f756d275ea214617dda5c2996c043ba1292a9d9/flask_environment_example.pdf)
+And while the cache seems to be pretty efficient for storing the responses that got through and later providing them, we saved one backup .csv file with the data (in the earlier phase) that if necessary, it can be loaded to see the graphical ouptu, however, we will also provide the pdf version of the flask miniapp to see the results without actually having to run the program. [PDF of the flask mini-app environment here](https://github.com/Vojtas52/Python-project/blob/7f756d275ea214617dda5c2996c043ba1292a9d9/flask_environment_example.pdf) [screen-recording example here](https://share.icloud.com/photos/0c4PlyLxx8C5EP5BTWh8U866g)
 
 
 [ORIGINAL]
