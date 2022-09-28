@@ -12,14 +12,6 @@ We save all those parameter, along with the respective URL, into a dataframe usi
 
 ## Which files are relavant in this repository?
 
-The core of the project is Jupyter Notebook [final_project_submit.ipynb](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/final_project_submit.ipynb).
-
-Then we also use two python scripts that contains functions that we have written, but to make the Jupyter Ntb. more concise, we saved them as separate files and we load them in the process - these scripts are [model_search.py](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/model_search.py) and [n_days_search.py](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/n_days_search.py).
-
-Another relevant file is [requirements.txt](https://github.com/Vojtas52/Python-project/blob/3ecfddd04d22bbf45240c4e08cc9764e5b79e2ce/requirements.txt) which specifies packages/libraries that are required for running our project, and also [.gitignore](https://github.com/Vojtas52/Python-project/blob/d465bfc4f743c0c9cae26dcce547690954eb5273/.gitignore).
-
-Apart from that (and the illustration displayed below), other files were used mainly during the project development as testing and debugging files, before putting it together into [final_project_submit.ipynb](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/final_project_submit.ipynb).
-
 [UPDATE]
 
 In further project development, we created a flask application - the source code is in [__main__.py](https://github.com/Vojtas52/Python-project/blob/a27758cef387553ca0a911c98756c0c0362e7708/__main__.py). Since there were some troubles with the obtaining responses from bazos.cz server on our requests, we solved this problem by creating [cache.py](https://github.com/Vojtas52/Python-project/blob/a27758cef387553ca0a911c98756c0c0362e7708/cache.py) that saves the responses that got through successfully (200). Also, the main part of the project that flask visualizes is in [templates/index.j2](https://github.com/Vojtas52/Python-project/blob/a98e3750847e787a42b21d7bb0c8f77ae763217a/templates/index.j2), where we list several of the ads and also some graphical comparison between Price vs Milage, and Year of Manufacture, respectively.
@@ -27,6 +19,17 @@ In further project development, we created a flask application - the source code
 Also, we tried to make a code a little more readable - we put data-mining functions into [data_mining.py](https://github.com/Vojtas52/Python-project/blob/a27758cef387553ca0a911c98756c0c0362e7708/data_mining.py) script. What's more, we adjusted many lines to be more concise, efficient (e.g., when raising errors, or comparing the types of used variables) in the entire source code (even though I am sure it can still be done much better somehow).
 
 And while the cache seems to be pretty efficient for storing the responses that got through and later providing them, we saved one backup .csv file with the data (in the earlier phase) that if necessary, it can be loaded to see the graphical ouptu, however, we will also provide the pdf version of the flask miniapp to see the results without actually having to run the program. [PDF of the flask mini-app here](https://github.com/Vojtas52/Python-project/blob/1154eacc407364256ca560b80cddab04bb6b34ad/process_diagram.png)
+
+
+[ORIGINAL]
+
+The core of the project is Jupyter Notebook [final_project_submit.ipynb](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/final_project_submit.ipynb).
+
+Then we also use two python scripts that contains functions that we have written, but to make the Jupyter Ntb. more concise, we saved them as separate files and we load them in the process - these scripts are [model_search.py](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/model_search.py) and [n_days_search.py](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/n_days_search.py).
+
+Another relevant file is [requirements.txt](https://github.com/Vojtas52/Python-project/blob/3ecfddd04d22bbf45240c4e08cc9764e5b79e2ce/requirements.txt) which specifies packages/libraries that are required for running our project, and also [.gitignore](https://github.com/Vojtas52/Python-project/blob/d465bfc4f743c0c9cae26dcce547690954eb5273/.gitignore).
+
+Apart from that (and the illustration displayed below), other files were used mainly during the project development as testing and debugging files, before putting it together into [final_project_submit.ipynb](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/final_project_submit.ipynb).
 
 
 [//]: <> (TO BE DONE: specify in which file is what, and etc. ... basically how to operate the .py script or jupyter ntb.)
