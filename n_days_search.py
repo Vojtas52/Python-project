@@ -19,9 +19,8 @@ def n_days_search(n_days: int, soup_list : list[str]):
     Function returns list of URLs of all advertisements that satisfied the required condition,
     and prepared for further processing - scraping and data-mining of the desired parameters.
     """
-    number_of_accepted_past_days = n_days #range (0:5) - if more,
-
-    n_days = int(n_days) #TODO - co robit ked do input nedam cislo? 
+    number_of_accepted_past_days = n_days
+    n_days = int(n_days)
 
     if not isinstance(n_days, int):
         raise TypeError('First argument (n_days) should be an integer. However, it is: '.type(n_days))
@@ -40,6 +39,8 @@ def n_days_search(n_days: int, soup_list : list[str]):
     # by the following code, we get the urls of each advertisement /offer/ (listed in the tabs we work with),
     # and save it to "list_of_offers_url"
     list_of_offers_url = list()
+    # global date_dict
+    # date_dict = {}
 
     for element in soup_list:
         #print(f"{element=}")
@@ -61,7 +62,7 @@ def n_days_search(n_days: int, soup_list : list[str]):
 
             if not date_object in accepted_days:
                 continue
-
+            #date_dict[f'https://auto.bazos.cz{w}'] = date_object
             list_of_offers_url.append(f'https://auto.bazos.cz{w}')
 
     print(f'The number of found advertisements matching the criteria: {len(list_of_offers_url)}.')

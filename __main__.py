@@ -26,7 +26,13 @@ def root():
     
     ############################################################
     ###tady zacina kod na scraping
+    #soup_list = search_model('octavia 3')
     soup_list = search_model(input)
+    
+    # initiallizing global dictionary for date
+    # global date_dict
+    # date_dict = {}
+
     #my_days = input()
     #my_days = int(my_days)
     my_days = 4
@@ -53,19 +59,27 @@ def root():
     ### TODO
     # nejako ulozit dni do listu a hodit to nizsie do date = ...
     #zapracovat filter tlacidlo na pocet dni (najprv napisat kod na filter a potom zapracovat jinja)
-    
+    ### TODO - riadok 42,43 a 65 v n_days_search.py som sa snazil urobit globalny dictionary, tiez tuto v main  na riadkoch
+    ### 33, 34 a 79-82
     
     #na konci updateovat readme popis + maybe diagram?_ 
 
     # NOTE: v pripade ze bazos nechce povolit/blokuje scrapovani muzeme nacist
     # 'result_filtered_backup.csv' a natahnout promenne below z daneho dataframe-u
     
+
+
     order = list(range(1, len(result['link'].values.tolist())))
     date = list(range(1, len(result['link'].values.tolist())))
     price = result['price'].values.tolist()
     mileage = result['mileage'].values.tolist()
     yom = result['year_of_manuf'].values.tolist()
     url = result['link'].values.tolist()
+    
+    # date = []
+    # for link in url:
+    #     if link in date_dict.keys():
+    #         date.append(date_dict[link])
 
     page_data = {
             'order-values': order,
@@ -82,10 +96,3 @@ def root():
 
 if __name__ == "__main__":
     app.run(port=8080)
-
-# below put into 
-#   <script>
-#     document.getElementById("queryButton2").addEventListener('click', () => {
-#       window.location.href = '/?input=' + document.getElementById('queryInput2').value 
-#     })
-#   </script>
