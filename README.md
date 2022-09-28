@@ -20,6 +20,10 @@ Another relevant file is [requirements.txt](https://github.com/Vojtas52/Python-p
 
 Apart from that (and the illustration displayed below), other files were used mainly during the project development as testing and debugging files, before putting it together into [final_project_submit.ipynb](https://github.com/Vojtas52/Python-project/blob/037af6a1e8ab453c98ce490891db56d40d1f02ff/final_project_submit.ipynb).
 
+[UPDATE]
+In further project development, we created a flask application - the source code is in [__main__.py](https://github.com/Vojtas52/Python-project/blob/a27758cef387553ca0a911c98756c0c0362e7708/__main__.py). Since there were some troubles with the obtaining responses from bazos.cz server on our requests, we solved this problem by creating [cache.py](https://github.com/Vojtas52/Python-project/blob/a27758cef387553ca0a911c98756c0c0362e7708/cache.py) that saves the responses that got through successfully (200).
+
+Also, we tried to make a code a little more readable - we put data-mining functions into [data_mining.py](https://github.com/Vojtas52/Python-project/blob/a27758cef387553ca0a911c98756c0c0362e7708/data_mining.py) script. What's more, we adjusted many lines to be more concise, efficient (e.g., when raising errors, or comparing the types of used variables) in the entire source code (even though I am sure it can still be done much better somehow).
 
 [//]: <> (TO BE DONE: specify in which file is what, and etc. ... basically how to operate the .py script or jupyter ntb.)
 
