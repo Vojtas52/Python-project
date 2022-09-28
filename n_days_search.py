@@ -1,6 +1,7 @@
 from datetime import date, datetime, timedelta
 import time
 
+DATE_DICT = {}
 #FILTER for advertisements added in last n_days 
 def n_days_search(n_days: int, soup_list : list[str]):
     """
@@ -39,8 +40,6 @@ def n_days_search(n_days: int, soup_list : list[str]):
     # by the following code, we get the urls of each advertisement /offer/ (listed in the tabs we work with),
     # and save it to "list_of_offers_url"
     list_of_offers_url = list()
-    # global date_dict
-    # date_dict = {}
 
     for element in soup_list:
         #print(f"{element=}")
@@ -62,10 +61,9 @@ def n_days_search(n_days: int, soup_list : list[str]):
 
             if not date_object in accepted_days:
                 continue
-            #date_dict[f'https://auto.bazos.cz{w}'] = date_object
+            DATE_DICT[f'https://auto.bazos.cz{w}'] = date_object
             list_of_offers_url.append(f'https://auto.bazos.cz{w}')
 
     print(f'The number of found advertisements matching the criteria: {len(list_of_offers_url)}.')
-    #logger / take a look on logging library
 
     return list_of_offers_url

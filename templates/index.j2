@@ -102,12 +102,12 @@
   <p><center>Please insert the name of your desired car model below.</center></p>
 
   <header>
-    <input id='queryInput'>
+    <input id='queryInput' value='octavia 3'>
     <button id='queryButton'>Search model</button>
   </header>
-
+<p><center>Please insert the number of past days you want to include in your search (max. 5).</center></p>
   <header>
-    <input id='queryInput2'>
+    <input id='queryInput2' type='number' value='4'>
     <button id='queryButton2'>Select days</button>
   </header>
 
@@ -233,11 +233,13 @@
 
   <script>
     document.getElementById("queryButton").addEventListener('click', () => {
+      document.documentElement.style.cursor = 'progress'
       window.location.href = '/?input=' + document.getElementById('queryInput').value + '&input2=' + document.getElementById('queryInput2').value
     })
   </script>
   <script>
     document.getElementById("queryButton2").addEventListener('click', () => {
+      document.documentElement.style.cursor = 'progress'
       window.location.href = '/?input=' + document.getElementById('queryInput').value + '&input2=' + document.getElementById('queryInput2').value
     })
   </script> 

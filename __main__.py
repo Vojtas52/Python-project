@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from model_search import search_model
-from n_days_search import n_days_search
+from n_days_search import n_days_search, DATE_DICT
 
 from data_mining import *
 from cache import cache
@@ -32,10 +32,6 @@ def root():
     ###tady zacina kod na scraping
     #soup_list = search_model('octavia 3')
     soup_list = search_model(input)
-    
-    # initiallizing global dictionary for date
-    # global date_dict
-    # date_dict = {}
 
     if soup_list is None:
         return "Bazos does not respond, please try again later.", 503
@@ -56,31 +52,21 @@ def root():
     test.show_best(n = 10)
     ### tady konci data mining part
     ############################################################
-
-    ### TODO
-    # nejako ulozit dni do listu a hodit to nizsie do date = ...
-    #zapracovat filter tlacidlo na pocet dni (najprv napisat kod na filter a potom zapracovat jinja)
-    ### TODO - riadok 42,43 a 65 v n_days_search.py som sa snazil urobit globalny dictionary, tiez tuto v main  na riadkoch
-    ### 33, 34 a 79-82
     
-    #na konci updateovat readme popis + maybe diagram?_ 
 
     # NOTE: v pripade ze bazos nechce povolit/blokuje scrapovani muzeme nacist
     # 'result_filtered_backup.csv' a natahnout promenne below z daneho dataframe-u
-    
-
 
     order = list(range(1, len(result['link'].values.tolist())))
-    date = list(range(1, len(result['link'].values.tolist())))
     price = result['price'].values.tolist()
     mileage = result['mileage'].values.tolist()
     yom = result['year_of_manuf'].values.tolist()
     url = result['link'].values.tolist()
     
-    # date = []
-    # for link in url:
-    #     if link in date_dict.keys():
-    #         date.append(date_dict[link])
+    date = []
+    for link in url:
+        if link in DATE_DICT.keys():
+            date.append(DATE_DICT[link])
 
     page_data = {
             'order-values': order,
@@ -91,7 +77,6 @@ def root():
             'url-values': url,
             'input': input
         }
-
 
     return render_template("index.j2", page_data=page_data)
 
